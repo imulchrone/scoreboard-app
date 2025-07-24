@@ -1,1 +1,1 @@
-web: gunicorn scoreboard-app:app
+web: gunicorn scoreboard:app
