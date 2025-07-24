@@ -1,4 +1,4 @@
 dash
 dash-bootstrap-components
-statsapi
+MLB-statsapi
 gunicorn
