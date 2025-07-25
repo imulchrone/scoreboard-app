@@ -46,7 +46,7 @@ def build_team_table(team_name, rows):
             dbc.Col("Players", width=4, style=centered(font_size='2.8vw')),
             dbc.Col("G1", width=1, style={**centered(font_size='2.8vw')}),
             dbc.Col("G2", width=1, style={**centered(font_size='2.8vw', justifyContent='center'),'paddingLeft':'4px'}),
-            dbc.Col("G3", width=1, style={**centered(font_size='2.8vw', justifyContent='left'),'paddingLeft':'2px'}),
+            dbc.Col("G3", width=1, style={**centered(font_size='2.8vw', justifyContent='left'),'paddingLeft':'1px'}),
             dbc.Col("Total", width=1, style={**centered(font_size='2.3vw'),'paddingLeft':'10px'}),
         ], style={
             'color': 'white',
@@ -80,7 +80,7 @@ def build_team_table(team_name, rows):
         ], style={
             'fontFamily': 'monospace',
             'color': 'white',
-            'minHeight': '45px',
+            'minHeight': '35px',
             'lineHeight': '1.2',
             'margin': 0,
             'padding': '0px',
