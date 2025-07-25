@@ -93,7 +93,8 @@ def build_team_table(team_name, rows):
             html.H4(team_name, style={
                 'color': 'white',
                 'textAlign': 'center',
-                'fontFamily': 'monospace'
+                'fontFamily': 'monospace',
+                'fontSize': '5.0vw'
             }),
             build_header(),
             *[build_row(row) for row in rows]
@@ -147,29 +148,29 @@ def fetch_data(_):
         team_a_order = ['Friz', 'Rife', 'Brian', 'Price', 'Ben', 'Ian', 'Julia','','']
         team_b_order = ['Childs', 'Adrian', 'Rory', 'Dave', 'Nagel', 'Dreyer', 'Sean','','']
 
-        # Primary game
-        team_a_name, team_a_g1 = getScores(testgame, 'away')
-        team_b_name, team_b_g1 = getScores(testgame, 'home')
+        # # Primary game
+        # team_a_name, team_a_g1 = getScores(testgame, 'away')
+        # team_b_name, team_b_g1 = getScores(testgame, 'home')
 
-        # Placeholder for future games
-        team_a_g2 = getScores(testgame2, 'away')[1]
-        team_a_g3 = getScores(testgame3, 'away')[1]
-        team_b_g2 = getScores(testgame2, 'home')[1]
-        team_b_g3 = getScores(testgame3, 'home')[1]
+        # # Placeholder for future games
+        # team_a_g2 = getScores(testgame2, 'away')[1]
+        # team_a_g3 = getScores(testgame3, 'away')[1]
+        # team_b_g2 = getScores(testgame2, 'home')[1]
+        # team_b_g3 = getScores(testgame3, 'home')[1]
 
-        # cubs_name, cubs_g1 = getScores(777017,'away')
-        # cubs_g2 = getScores(776994,'away')[1]
-        # cubs_g3 = getScores(776989,'away')[1]
+        cubs_name, cubs_g1 = getScores(777017,'away')
+        cubs_g2 = getScores(776994,'away')[1]
+        cubs_g3 = getScores(776989,'away')[1]
 
-        # whitesox_name, whitesox_g1 = getScores(777017,'home')
-        # whitesox_g2 = getScores(776994,'home')[1]
-        # whitesox_g3 = getScores(776989,'home')[1]
+        whitesox_name, whitesox_g1 = getScores(777017,'home')
+        whitesox_g2 = getScores(776994,'home')[1]
+        whitesox_g3 = getScores(776989,'home')[1]
 
         return {
-            'team_a_name': team_a_name,
-            'team_b_name': team_b_name,
-            'team_a_rows': consolidate_scores(team_a_g1, team_a_g2, team_a_g3, team_a_order),
-            'team_b_rows': consolidate_scores(team_b_g1, team_b_g2, team_b_g3, team_b_order)
+            'team_a_name': cubs_name,
+            'team_b_name': whitesox_name,
+            'team_a_rows': consolidate_scores(cubs_g1, cubs_g2, cubs_g3, team_a_order),
+            'team_b_rows': consolidate_scores(whitesox_g1, whitesox_g2, whitesox_g3, team_b_order)
         }
 
     except Exception as e:
