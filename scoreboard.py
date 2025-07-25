@@ -100,7 +100,7 @@ def build_team_table(team_name, rows):
             'padding': '20px',
             'border': '1px solid white',
             'borderRadius': '10px',
-            'minWidth': '350px'  # Ensure full table fits
+            'minWidth': '325px'  # Ensure full table fits
         }),
         style={
             'width': '100%',
