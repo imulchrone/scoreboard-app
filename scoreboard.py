@@ -55,7 +55,8 @@ def build_team_table(team_name, rows):
             'fontFamily': 'monospace',
             'fontSize': '1.3vw',
             'marginBottom': '6px',
-            'paddingRight':'2px'
+            'paddingRight':'2px',
+            'textShadow': '0 0 1px black, 1px 0 black, -1px 0 black, 0 1px black, 0 -1px black'
         })
 
     def build_row(row):
@@ -68,7 +69,8 @@ def build_team_table(team_name, rows):
                         'margin': 0,
                         'whiteSpace': 'pre-wrap',
                         'overflow': 'hidden',
-                        'fontSize': '1.8vw'
+                        'fontSize': '1.8vw',
+                        'textShadow': '0 0 1px black, 1px 0 black, -1px 0 black, 0 1px black, 0 -1px black'
                     }),
                     style={'display': 'flex', 'alignItems': 'center', 'height': '100%', 'justifyContent':'left'}
                 ), width=4
@@ -84,7 +86,8 @@ def build_team_table(team_name, rows):
             'lineHeight': '1.2',
             'margin': 0,
             'padding': '0px',
-            'marginBottom':'4px'
+            'marginBottom':'4px',
+            'textShadow': '0 0 1px black, 1px 0 black, -1px 0 black, 0 1px black, 0 -1px black'
         })
 
 
@@ -94,12 +97,13 @@ def build_team_table(team_name, rows):
                 'color': 'white',
                 'textAlign': 'center',
                 'fontFamily': 'monospace',
-                'fontSize': '5.0vw'
+                'fontSize': '5.0vw',
+                'textShadow': '0 0 1px black, 1px 0 black, -1px 0 black, 0 1px black, 0 -1px black'
             }),
             build_header(),
             *[build_row(row) for row in rows]
         ], style={
-            'backgroundColor': '#2E6B3C',
+            'backgroundColor': 'rgba(0, 0, 0, 0.6)',
             'padding': '20px',
             'border': '1px solid white',
             'borderRadius': '10px',
@@ -126,7 +130,10 @@ app.layout = html.Div([
     dcc.Store(id='cached-data'),
     html.Div(id='content')
 ], style={
-    'backgroundColor': '#1E4D2B',
+    'backgroundImage': 'url("/assets/stewings.jpg")',
+    'backgroundRepeat': 'repeat',
+    'backgroundSize': '100px',  # or use a specific size like '100px' for tighter pattern
+    'backgroundPosition': 'top left',
     'margin': '0',
     'paddingTop': '30px',
     'paddingBottom': '30px',
