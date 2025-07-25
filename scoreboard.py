@@ -125,7 +125,8 @@ app.layout = html.Div([
 ], style={
     'backgroundColor': '#1E4D2B',
     'margin': '0',
-    'padding': '0',
+    'paddingTop': '30px',
+    'paddingBottom': '30px',
     'width': '100vw',
     'minHeight': '100vh',
     'overflowX': 'hidden'  # Optional: prevents horizontal scrollbar
