@@ -42,12 +42,12 @@ def build_team_table(team_name, rows):
     def build_header():
         return dbc.Row([
             dbc.Col("", width=1, style=centered()),
-            dbc.Col("Member", width=2, style=centered(font_size='2.8vw')),
+            dbc.Col("Member", width=2, style=centered(font_size='2.8vw',textAlign='right')),
             dbc.Col("Players", width=4, style=centered(font_size='2.8vw')),
             dbc.Col("G1", width=1, style=centered(font_size='2.8vw')),
             dbc.Col("G2", width=1, style=centered(font_size='2.8vw')),
             dbc.Col("G3", width=1, style=centered(font_size='2.8vw')),
-            dbc.Col("Total", width=2, style=centered(font_size='2.8vw')),
+            dbc.Col("Total", width=1, style=centered(font_size='2.8vw')),
         ], style={
             'color': 'white',
             'fontWeight': 'bold',
@@ -60,7 +60,7 @@ def build_team_table(team_name, rows):
     def build_row(row):
         return dbc.Row([
             dbc.Col(row['spot'], width=1, style=centered(font_size='2.8vw',textAlign='left')),
-            dbc.Col(row['member'], width=2, style=centered(font_size='2.8vw',textAlign='left')),
+            dbc.Col(row['member'], width=2, style=centered(font_size='2.8vw')),
             dbc.Col(
                 html.Div(
                     html.Pre(row['names'], style={
@@ -75,7 +75,7 @@ def build_team_table(team_name, rows):
             dbc.Col(str(row['g1']), width=1, style=centered(font_size='2.8vw')),
             dbc.Col(str(row['g2']), width=1, style=centered(font_size='2.8vw')),
             dbc.Col(str(row['g3']), width=1, style=centered(font_size='2.8vw')),
-            dbc.Col(str(row['total']), width=2, style=centered(font_size='2.8vw')),
+            dbc.Col(str(row['total']), width=1, style=centered(font_size='2.8vw')),
         ], style={
             'fontFamily': 'monospace',
             'color': 'white',
@@ -104,7 +104,7 @@ def build_team_table(team_name, rows):
         }),
         style={
             'width': '100%',
-            'overflowX': 'auto',   # enables scroll if too small
+            # 'overflowX': 'auto',   # enables scroll if too small
             'margin': '0 auto 30px auto',
             'paddingLeft': '2%',
             'paddingRight': '2%',
@@ -119,7 +119,7 @@ def build_team_table(team_name, rows):
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
 app.layout = html.Div([
-    dcc.Interval(id='refresh', interval=60*1000, n_intervals=0),
+    dcc.Interval(id='refresh', interval=30*1000, n_intervals=0),
     dcc.Store(id='cached-data'),
     html.Div(id='content')
 ], style={
