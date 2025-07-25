@@ -54,8 +54,8 @@ def build_team_table(team_name, rows):
             'borderBottom': '2px solid white',
             'fontFamily': 'monospace',
             'fontSize': '1.3vw',
-            'marginBottom': '4px',
-            'paddingRight':'6px'
+            'marginBottom': '6px',
+            'paddingRight':'2px'
         })
 
     def build_row(row):
@@ -80,10 +80,11 @@ def build_team_table(team_name, rows):
         ], style={
             'fontFamily': 'monospace',
             'color': 'white',
-            'minHeight': '60px',
+            'minHeight': '45px',
             'lineHeight': '1.2',
             'margin': 0,
-            'padding': '4px'
+            'padding': '0px',
+            'marginBottom':'4px'
         })
 
 
