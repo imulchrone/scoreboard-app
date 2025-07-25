@@ -27,11 +27,11 @@ def consolidate_scores(g1, g2, g3, order):
         })
     return rows
 
-def centered(font_size='1.1vw', textAlign = 'center'):
+def centered(font_size='1.1vw', textAlign = 'center', alignItems = 'center'):
     return {
         'textAlign': textAlign,
         'display': 'flex',
-        'alignItems': 'center',
+        'alignItems': alignItems,
         'justifyContent': 'center',
         'fontSize': font_size,
         'overflow': 'hidden',
@@ -42,11 +42,11 @@ def build_team_table(team_name, rows):
     def build_header():
         return dbc.Row([
             dbc.Col("", width=1, style=centered()),
-            dbc.Col("Member", width=2, style={**centered(font_size='2.8vw'), 'paddingRight':'12px'}),
+            dbc.Col("Member", width=2, style={**centered(font_size='2.8vw', alignItems='left')}),
             dbc.Col("Players", width=4, style=centered(font_size='2.8vw')),
-            dbc.Col("G1", width=1, style={**centered(font_size='2.8vw'),'paddingRight':'4px'}),
-            dbc.Col("G2", width=1, style={**centered(font_size='2.8vw'),'paddingRight':'6px'}),
-            dbc.Col("G3", width=1, style={**centered(font_size='2.8vw'),'paddingRight':'6px'}),
+            dbc.Col("G1", width=1, style={**centered(font_size='2.8vw'),'paddingRight':'8px'}),
+            dbc.Col("G2", width=1, style={**centered(font_size='2.8vw'),'paddingRight':'8px'}),
+            dbc.Col("G3", width=1, style={**centered(font_size='2.8vw'),'paddingRight':'8px'}),
             dbc.Col("Total", width=1, style={**centered(font_size='2.3vw'),'paddingRight':'8px'}),
         ], style={
             'color': 'white',
