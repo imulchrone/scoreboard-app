@@ -68,7 +68,7 @@ def build_team_table(team_name, rows):
                         'margin': 0,
                         'whiteSpace': 'pre-wrap',
                         'overflow': 'hidden',
-                        'fontSize': '2.0vw'
+                        'fontSize': '1.8vw'
                     }),
                     style={'display': 'flex', 'alignItems': 'center', 'height': '100%', 'justifyContent':'left'}
                 ), width=4
