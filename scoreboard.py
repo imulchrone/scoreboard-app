@@ -45,9 +45,9 @@ def build_team_table(team_name, rows):
             dbc.Col("Member", width=2, style={**centered(font_size='2.8vw')}),
             dbc.Col("Players", width=4, style=centered(font_size='2.8vw')),
             dbc.Col("G1", width=1, style={**centered(font_size='2.8vw')}),
-            dbc.Col("G2", width=1, style={**centered(font_size='2.8vw', justifyContent='center'),'paddingLeft':'2px'}),
+            dbc.Col("G2", width=1, style={**centered(font_size='2.8vw', justifyContent='center'),'paddingLeft':'4px'}),
             dbc.Col("G3", width=1, style={**centered(font_size='2.8vw', justifyContent='left'),'paddingLeft':'2px'}),
-            dbc.Col("Total", width=1, style={**centered(font_size='2.3vw'),'paddingLeft':'8px'}),
+            dbc.Col("Total", width=1, style={**centered(font_size='2.3vw'),'paddingLeft':'10px'}),
         ], style={
             'color': 'white',
             'fontWeight': 'bold',
@@ -76,7 +76,7 @@ def build_team_table(team_name, rows):
             dbc.Col(str(row['g1']), width=1, style={**centered(font_size='2.8vw')}),
             dbc.Col(str(row['g2']), width=1, style={**centered(font_size='2.8vw')}),
             dbc.Col(str(row['g3']), width=1, style={**centered(font_size='2.8vw')}),
-            dbc.Col(str(row['total']), width=1, style={**centered(font_size='2.8vw'), 'paddingRight':'4px'}),
+            dbc.Col(str(row['total']), width=1, style={**centered(font_size='2.8vw'), 'paddingRight':'2px'}),
         ], style={
             'fontFamily': 'monospace',
             'color': 'white',
