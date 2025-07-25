@@ -104,7 +104,7 @@ def build_team_table(team_name, rows):
         }),
         style={
             'width': '100%',
-            # 'overflowX': 'auto',   # enables scroll if too small
+            'overflowX': 'auto',   # enables scroll if too small
             'margin': '0 auto 30px auto',
             'paddingLeft': '2%',
             'paddingRight': '2%',
