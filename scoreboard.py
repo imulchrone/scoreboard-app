@@ -132,7 +132,7 @@ app.layout = html.Div([
 )
 def fetch_data(_):
     try:
-        testgame = 777019
+        testgame = 777023
         team_a_order = ['Friz', 'Rife', 'Brian', 'Price', 'Ben', 'Ian', 'Julia','','']
         team_b_order = ['Childs', 'Adrian', 'Rory', 'Dave', 'Nagel', 'Dreyer', 'Sean','','']
 
