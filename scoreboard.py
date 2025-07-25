@@ -42,12 +42,12 @@ def build_team_table(team_name, rows):
     def build_header():
         return dbc.Row([
             dbc.Col("", width=1, style=centered()),
-            dbc.Col("Member", width=2, style={**centered(font_size='2.8vw'), 'paddingRight':'6px'}),
+            dbc.Col("Member", width=2, style={**centered(font_size='2.8vw'), 'paddingRight':'12px'}),
             dbc.Col("Players", width=4, style=centered(font_size='2.8vw')),
             dbc.Col("G1", width=1, style={**centered(font_size='2.8vw')}),
             dbc.Col("G2", width=1, style={**centered(font_size='2.8vw')}),
             dbc.Col("G3", width=1, style={**centered(font_size='2.8vw')}),
-            dbc.Col("Total", width=1, style={**centered(font_size='2.8vw')}),
+            dbc.Col("Total", width=1, style={**centered(font_size='2.8vw'),'paddingRight':'8px'}),
         ], style={
             'color': 'white',
             'fontWeight': 'bold',
@@ -60,8 +60,8 @@ def build_team_table(team_name, rows):
 
     def build_row(row):
         return dbc.Row([
-            dbc.Col(row['spot'], width=1, style={**centered(font_size='2.8vw'), 'paddingRight':'8px'}),
-            dbc.Col(row['member'], width=2, style={**centered(font_size='2.8vw'), 'paddingRight':'8px'}),
+            dbc.Col(row['spot'], width=1, style={**centered(font_size='2.8vw')}),
+            dbc.Col(row['member'], width=2, style={**centered(font_size='2.8vw'), 'paddingRight':'12px'}),
             dbc.Col(
                 html.Div(
                     html.Pre(row['names'], style={
