@@ -100,14 +100,14 @@ def build_team_table(team_name, rows):
             'padding': '20px',
             'border': '1px solid white',
             'borderRadius': '10px',
-            'minWidth': '300px'  # Ensure full table fits
+            'minWidth': '400px'  # Ensure full table fits
         }),
         style={
             'width': '100%',
             'overflowX': 'auto',   # enables scroll if too small
             'margin': '0 auto 30px auto',
-            'paddingLeft': '5%',
-            'paddingRight': '5%',
+            'paddingLeft': '2%',
+            'paddingRight': '2%',
         }
     )
 
