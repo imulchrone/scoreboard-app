@@ -100,7 +100,7 @@ def build_team_table(team_name, rows):
             'padding': '20px',
             'border': '1px solid white',
             'borderRadius': '10px',
-            'minWidth': '400px'  # Ensure full table fits
+            'minWidth': '350px'  # Ensure full table fits
         }),
         style={
             'width': '100%',
@@ -139,6 +139,8 @@ app.layout = html.Div([
 def fetch_data(_):
     try:
         testgame = 777023
+        testgame2 = 777018
+        testgame3 = 777025
         team_a_order = ['Friz', 'Rife', 'Brian', 'Price', 'Ben', 'Ian', 'Julia','','']
         team_b_order = ['Childs', 'Adrian', 'Rory', 'Dave', 'Nagel', 'Dreyer', 'Sean','','']
 
@@ -147,10 +149,10 @@ def fetch_data(_):
         team_b_name, team_b_g1 = getScores(testgame, 'home')
 
         # Placeholder for future games
-        team_a_g2 = {}
-        team_a_g3 = {}
-        team_b_g2 = {}
-        team_b_g3 = {}
+        team_a_g2 = getScores(testgame2, 'away')[1]
+        team_a_g3 = getScores(testgame3, 'away')[1]
+        team_b_g2 = getScores(testgame2, 'home')[1]
+        team_b_g3 = getScores(testgame3, 'home')[1]
 
         # cubs_name, cubs_g1 = getScores(777017,'away')
         # cubs_g2 = getScores(776994,'away')[1]
