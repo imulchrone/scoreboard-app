@@ -88,23 +88,31 @@ def build_team_table(team_name, rows):
 
     return html.Div(
         dbc.Card([
-            html.H4(team_name, style={'color': 'white', 'textAlign': 'center', 'fontFamily': 'monospace', 'fontSize':'2.8vw'}),
+            html.H4(team_name, style={
+                'color': 'white',
+                'textAlign': 'center',
+                'fontFamily': 'monospace'
+            }),
             build_header(),
             *[build_row(row) for row in rows]
         ], style={
             'backgroundColor': '#2E6B3C',
             'padding': '20px',
             'border': '1px solid white',
-            'borderRadius': '10px'
+            'borderRadius': '10px',
+            'minWidth': '300px'  # Ensure full table fits
         }),
         style={
-            'margin': '0 auto 30px auto',
             'width': '100%',
+            'overflowX': 'auto',   # enables scroll if too small
+            'margin': '0 auto 30px auto',
             'paddingLeft': '5%',
             'paddingRight': '5%',
         }
-
     )
+
+
+
 
 
 # Dash app
