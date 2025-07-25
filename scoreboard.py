@@ -70,7 +70,7 @@ def build_team_table(team_name, rows):
                         'overflow': 'hidden',
                         'fontSize': '2.0vw'
                     }),
-                    style={'display': 'flex', 'alignItems': 'center', 'height': '100%'}
+                    style={'display': 'flex', 'alignItems': 'center', 'height': '100%', 'justifyContent':'left'}
                 ), width=4
             ),
             dbc.Col(str(row['g1']), width=1, style={**centered(font_size='3.0vw')}),
