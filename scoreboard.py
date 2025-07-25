@@ -59,8 +59,8 @@ def build_team_table(team_name, rows):
 
     def build_row(row):
         return dbc.Row([
-            dbc.Col(row['spot'], width=1, style=centered(font_size='2.0vw',textAlign='left')),
-            dbc.Col(row['member'], width=2, style=centered(font_size='2.0vw',textAlign='left')),
+            dbc.Col(row['spot'], width=1, style=centered(font_size='2.8vw',textAlign='left')),
+            dbc.Col(row['member'], width=2, style=centered(font_size='2.8vw',textAlign='left')),
             dbc.Col(
                 html.Div(
                     html.Pre(row['names'], style={
@@ -72,10 +72,10 @@ def build_team_table(team_name, rows):
                     style={'display': 'flex', 'alignItems': 'center', 'height': '100%'}
                 ), width=4
             ),
-            dbc.Col(str(row['g1']), width=1, style=centered(font_size='2.0vw')),
-            dbc.Col(str(row['g2']), width=1, style=centered(font_size='2.0vw')),
-            dbc.Col(str(row['g3']), width=1, style=centered(font_size='2.0vw')),
-            dbc.Col(str(row['total']), width=2, style=centered(font_size='2.0vw')),
+            dbc.Col(str(row['g1']), width=1, style=centered(font_size='2.8vw')),
+            dbc.Col(str(row['g2']), width=1, style=centered(font_size='2.8vw')),
+            dbc.Col(str(row['g3']), width=1, style=centered(font_size='2.8vw')),
+            dbc.Col(str(row['total']), width=2, style=centered(font_size='2.8vw')),
         ], style={
             'fontFamily': 'monospace',
             'color': 'white',
@@ -120,9 +120,17 @@ app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
 app.layout = html.Div([
     dcc.Interval(id='refresh', interval=60*1000, n_intervals=0),
-    dcc.Store(id='cached-data'),  # For storing score data
+    dcc.Store(id='cached-data'),
     html.Div(id='content')
-], style={'backgroundColor': '#1E4D2B', 'padding': '30px'})
+], style={
+    'backgroundColor': '#1E4D2B',
+    'margin': '0',
+    'padding': '0',
+    'width': '100vw',
+    'minHeight': '100vh',
+    'overflowX': 'hidden'  # Optional: prevents horizontal scrollbar
+})
+
 
 @app.callback(
     Output('cached-data', 'data'),
