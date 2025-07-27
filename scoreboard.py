@@ -155,8 +155,8 @@ def build_rankings_table(team_a_rows, team_b_rows):
                 ])
             ], width=3, style={**centered(justifyContent='center'), 'paddingLeft': '4px'}),
             dbc.Col(str(row['team']), width=3, style={**centered(font_size='2.5vw', justifyContent='center')}),
-            dbc.Col(str(row['total']), width=2, style=centered(font_size='3.0vw')),
-            dbc.Col(str(row['lob']), width=2, style={**centered(font_size='3.0vw', justifyContent='right'), 'paddingLeft': '6px'}),
+            dbc.Col(str(row['total']), width=2, style={**centered(font_size='3.0vw', justifyContent='center'), 'paddingLeft': '18px'}),
+            dbc.Col(str(row['lob']), width=2, style={**centered(font_size='3.0vw', justifyContent='right'), 'paddingRight': '10px'}),
         ], style={
             'fontFamily': 'monospace',
             'color': 'white',
