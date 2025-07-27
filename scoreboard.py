@@ -5,17 +5,20 @@ from getscore import getScores
 import traceback
 
 # Consolidate function with multi-line name block
-def consolidate_scores(g1, g2, g3, order):
+def consolidate_scores(g1, g2, g3, order, team_name):
     rows = []
     for spot in range(1, 10):
-        g1_names = "; ".join(g1.get(spot, {}).get('name', []))
-        g2_names = "; ".join(g2.get(spot, {}).get('name', []))
-        g3_names = "; ".join(g3.get(spot, {}).get('name', []))
+        g1_data = g1.get(spot, {})
+        g2_data = g2.get(spot, {})
+        g3_data = g3.get(spot, {})
+        g1_names = "; ".join(g1_data.get('name', []))
+        g2_names = "; ".join(g2_data.get('name', []))
+        g3_names = "; ".join(g3_data.get('name', []))
         names = f"G1: {g1_names}\nG2: {g2_names}\nG3: {g3_names}"
-        s1 = g1.get(spot, {}).get('score', 0)
-        s2 = g2.get(spot, {}).get('score', 0)
-        s3 = g3.get(spot, {}).get('score', 0)
+        s1, s2, s3 = g1_data.get('score', 0), g2_data.get('score', 0), g3_data.get('score', 0)
+        l1, l2, l3 = g1_data.get('lob', 0), g2_data.get('lob', 0), g3_data.get('lob', 0)
         total = s1 + s2 + s3
+        lob_total = l1 + l2 + l3
         rows.append({
             'spot': f"{spot}.",
             'member': order[spot-1],
@@ -23,9 +26,12 @@ def consolidate_scores(g1, g2, g3, order):
             'g1': s1,
             'g2': s2,
             'g3': s3,
-            'total': total
+            'total': total,
+            'lob': lob_total,
+            'team': team_name
         })
     return rows
+
 
 def centered(font_size='1.1vw', textAlign = 'center', justifyContent = 'center'):
     return {
@@ -118,7 +124,77 @@ def build_team_table(team_name, rows):
         }
     )
 
+def build_rankings_table(team_a_rows, team_b_rows):
+    all_rows = [r for r in (team_a_rows + team_b_rows) if r['member'].strip()]
+    sorted_rows = sorted(all_rows, key=lambda r: (-r['total'], r['lob']))
 
+    def build_header():
+        return dbc.Row([
+            dbc.Col("", width=1, style=centered(font_size='2.8vw')),
+            dbc.Col("Member", width=3, style={**centered(font_size='2.8vw', justifyContent='center'), 'paddingRight': '4px'}),
+            dbc.Col("Team", width=3, style={**centered(font_size='2.8vw')}),
+            dbc.Col("Points", width=2, style={**centered(font_size='2.8vw')}),
+            dbc.Col("LOB", width=2, style={**centered(font_size='2.8vw', justifyContent='right')}),
+        ], style={
+            'color': 'white',
+            'fontWeight': 'bold',
+            'borderBottom': '2px solid white',
+            'fontFamily': 'monospace',
+            'fontSize': '1.3vw',
+            'marginBottom': '6px',
+            'paddingRight': '2px',
+            'textShadow': '0 0 1px black, 1px 0 black, -1px 0 black, 0 1px black, 0 -1px black'
+        })
+
+    def build_row(rank, row):
+        return dbc.Row([
+            dbc.Col((f"{rank}."), width=1, style=centered(font_size='2.8vw')),
+            dbc.Col([
+                html.Div([
+                    html.Div(row['member'], style={'fontSize': '2.8vw'})
+                ])
+            ], width=3, style={**centered(justifyContent='center'), 'paddingLeft': '4px'}),
+            dbc.Col(str(row['team']), width=3, style={**centered(font_size='3.0vw', justifyContent='center')}),
+            dbc.Col(str(row['total']), width=2, style=centered(font_size='3.0vw')),
+            dbc.Col(str(row['lob']), width=2, style={**centered(font_size='3.0vw', justifyContent='right')}),
+        ], style={
+            'fontFamily': 'monospace',
+            'color': 'white',
+            'minHeight': '35px',
+            'lineHeight': '1.2',
+            'margin': 0,
+            'padding': '0px',
+            'marginBottom': '4px',
+            'textShadow': '0 0 1px black, 1px 0 black, -1px 0 black, 0 1px black, 0 -1px black'
+        })
+
+
+    return html.Div(
+        dbc.Card([
+            html.H4("Standings", style={
+                'color': 'white',
+                'textAlign': 'center',
+                'fontFamily': 'monospace',
+                'fontSize': '5.0vw',
+                'textShadow': '0 0 1px black, 1px 0 black, -1px 0 black, 0 1px black, 0 -1px black'
+            }),
+            build_header(),
+            *[build_row(i + 1, row) for i, row in enumerate(sorted_rows)]
+        ], style={
+            'backgroundColor': 'rgba(0, 0, 0, 0.6)',
+            'padding': '20px',
+            'border': '1px solid white',
+            'borderRadius': '10px',
+            'minWidth': '325px'
+        }),
+        style={
+            'width': '100%',
+            'overflowX': 'auto',
+            'margin': '0 auto 30px auto',
+            'paddingLeft': '2%',
+            'paddingRight': '2%',
+        }
+    )
 
 
 
@@ -176,8 +252,8 @@ def fetch_data(_):
         return {
             'team_a_name': cubs_name,
             'team_b_name': whitesox_name,
-            'team_a_rows': consolidate_scores(cubs_g1, cubs_g2, cubs_g3, team_a_order),
-            'team_b_rows': consolidate_scores(whitesox_g1, whitesox_g2, whitesox_g3, team_b_order)
+            'team_a_rows': consolidate_scores(cubs_g1, cubs_g2, cubs_g3, team_a_order, cubs_name),
+            'team_b_rows': consolidate_scores(whitesox_g1, whitesox_g2, whitesox_g3, team_b_order, whitesox_name)
         }
 
     except Exception as e:
@@ -203,8 +279,10 @@ def render_layout(data):
 
     team_a = build_team_table(data['team_a_name'], data['team_a_rows'])
     team_b = build_team_table(data['team_b_name'], data['team_b_rows'])
+    rankings = build_rankings_table(data['team_a_rows'], data['team_b_rows'])
 
-    return [team_a, team_b]
+    return [team_a, team_b, rankings]
+
 
 
 
